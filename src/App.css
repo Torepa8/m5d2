@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.mh-50{
+  min-height: 200px;
+}
+
+.hfix{
+  max-height: 200px;
+  object-fit: cover;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
