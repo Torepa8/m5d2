@@ -7,13 +7,13 @@ import scifi from '../data/scifi.json'
 
 import { useState } from 'react'
 
-// const AllGenres = {
-//     fantasy,
-//     history,
-//     horror,
-//     romance,
-//     scifi
-// }
+const AllGenres = {
+    fantasy,
+    history,
+    horror,
+    romance,
+    scifi
+}
 
 
 function SingleBook({ libro }) {
@@ -56,9 +56,7 @@ export default function AllTheBooks() {
 
     return (
         <>
-
             <FormInput />
-
             {fantasy.map((book) => (
                 <SingleBook libro={book} key={book.asin} />
             ))}
