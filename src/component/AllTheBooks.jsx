@@ -5,6 +5,7 @@ import horror from '../data/horror.json'
 import romance from '../data/romance.json'
 import scifi from '../data/scifi.json'
 
+
 import { useState } from 'react'
 
 const AllGenres = {
@@ -32,6 +33,7 @@ function SingleBook({ libro }) {
                     <Card.Title className='text-truncate'>{libro.title}</Card.Title>
                 </Card.Body>
             </Card>
+            {/* <CommentArea /> */}
         </Col>
     )
 }
