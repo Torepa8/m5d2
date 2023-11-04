@@ -1,13 +1,13 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import BookSelected from "../context/context"
 import { useContext } from "react"
 
 const APIallcomments = 'https://striveschool-api.herokuapp.com/api/comments/'
-const allcomments = []
 
 
 export default function CommentArea() {
     const { selected } = useContext(BookSelected)
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         fetch(APIallcomments + selected, {
@@ -16,16 +16,15 @@ export default function CommentArea() {
             }
         }
         )
-            .then(r => r.json())
-            .then(Allcomment)
+            .then((r) => r.json())
+            .then(setComments)
             .catch(alert('errore caricamento'))
     }, [selected])
 
-    function Allcomment(comments) {
-        console.log(comments)
-    }
-
+    console.table(comments)
     return (
-        <h5>{}</h5>
-    )
+        comments.map((comment) => (
+            <h5>{comment.comment}</h5>
+        )
+        ))
 }

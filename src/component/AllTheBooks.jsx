@@ -5,7 +5,7 @@ import BookSelected from '../context/context'
 
 
 function SingleBook({ libro }) {
-    const {selected, setSelected} = useContext(BookSelected)
+    const { selected, setSelected } = useContext(BookSelected)
 
     return (
         <Col className='col-12 col-lg-4 col-md-6'>
@@ -13,7 +13,7 @@ function SingleBook({ libro }) {
                 onClick={() => setSelected(libro.asin)}
                 className="my-2"
                 style={{
-                    outline: (selected===libro.asin) ? "3px solid black" : "3px solid transparent",
+                    outline: (selected === libro.asin) ? "3px solid black" : "3px solid transparent",
                 }}>
                 <Card.Img className='hfix' variant="top" src={libro.img} />
                 <Card.Body>
@@ -27,7 +27,6 @@ function SingleBook({ libro }) {
 export default function AllTheBooks({ userSearch }) {
 
     return (
-        /* <CommentArea eId='0451414888' /> */
         <>
             {fantasy.filter((bf) => bf.title.toLowerCase().includes(userSearch.toLowerCase()))
                 .map((b) => {

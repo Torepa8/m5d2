@@ -26,11 +26,11 @@ function App() {
                   <AllTheBooks userSearch={userSearch} />
                 </Row>
               </Container>
-              <Col className="col-6">
-                <CommentArea />
-                {/* qui commenti del libro selezionato */}
-              </Col>
             </Col>
+                <Col className="col-6">
+                  <CommentArea />
+                  {/* qui commenti del libro selezionato */}
+                </Col>
           </Row>
         </Container>
         <MyFooter />
