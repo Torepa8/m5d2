@@ -1,9 +1,22 @@
-import Container from 'react-bootstrap/Container';
+import { Form,Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../react.png'
 
-export default function MyNav() {
+function FormInput({userSearch,setUserSearch}) {
+  return (
+      <Form.Group>
+          <Form.Label>Search</Form.Label>
+          <Form.Control
+              type="text"
+              value={userSearch}        //per tenere in memoria il testo che scrive l'utente
+              onChange={(event) => setUserSearch(event.target.value)}
+          />
+      </Form.Group>
+  )
+}
+
+export default function MyNav({userSearch,setUserSearch}) {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -24,6 +37,7 @@ export default function MyNav() {
             <Nav.Link href="#link">Browse</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <FormInput userSearch={userSearch} setUserSearch={setUserSearch}/>
       </Container>
     </Navbar>
   );

@@ -1,68 +1,41 @@
-import { Card, Col, Form } from 'react-bootstrap'
+import { Card, Col } from 'react-bootstrap'
 import fantasy from '../data/fantasy.json'
-import history from '../data/history.json'
-import horror from '../data/horror.json'
-import romance from '../data/romance.json'
-import scifi from '../data/scifi.json'
-
-
-import { useState } from 'react'
-
-const AllGenres = {
-    fantasy,
-    history,
-    horror,
-    romance,
-    scifi
-}
+import { useContext } from 'react'
+import BookSelected from '../context/context'
 
 
 function SingleBook({ libro }) {
-    const [selected, setSelected] = useState(false)
+    const {selected, setSelected} = useContext(BookSelected)
 
     return (
-        <Col className='col-6 col-md-4 col-lg-3'>
+        <Col className='col-12 col-lg-4 col-md-6'>
             <Card
-                onClick={() => setSelected(!selected)}
+                onClick={() => setSelected(libro.asin)}
                 className="my-2"
                 style={{
-                    outline: selected ? "3px solid red" : "3px solid transparent",
+                    outline: (selected===libro.asin) ? "3px solid black" : "3px solid transparent",
                 }}>
                 <Card.Img className='hfix' variant="top" src={libro.img} />
                 <Card.Body>
                     <Card.Title className='text-truncate'>{libro.title}</Card.Title>
                 </Card.Body>
             </Card>
-            {/* <CommentArea /> */}
         </Col>
     )
 }
 
-function FormInput() {
-    const [userSearch, setUserch] = useState("")
-    return (
-        <Form.Group>
-            <Form.Label>Search</Form.Label>
-            <Form.Control
-                type="text"
-                value={userSearch}        //per tenere in memoria il testo che scrive l'utente
-                onChange={(event) => setUserch(event.target.value)}
-            />
-        </Form.Group>
-    )
-}
-
-export default function AllTheBooks() {
-
-    // const [userSearch, setUserch] = useState("")
+export default function AllTheBooks({ userSearch }) {
 
     return (
+        /* <CommentArea eId='0451414888' /> */
         <>
-            <FormInput />
-            {fantasy.map((book) => (
-                <SingleBook libro={book} key={book.asin} />
-            ))}
-
+            {fantasy.filter((bf) => bf.title.toLowerCase().includes(userSearch.toLowerCase()))
+                .map((b) => {
+                    return (
+                        <SingleBook libro={b} key={b.asin} />
+                    )
+                }
+                )}
         </>
     )
 }
