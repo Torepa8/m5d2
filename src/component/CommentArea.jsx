@@ -10,18 +10,19 @@ export default function CommentArea() {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        fetch(APIallcomments + selected, {
-            headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3ZjlkMzc3Y2RhYTAwMTQ2ZGYzODIiLCJpYXQiOjE2OTgxNjcyNTIsImV4cCI6MTY5OTM3Njg1Mn0.F1WGzQ8_kui5LLDefDSgxqBx32KYZ1bXeRTRTc4mE-w"
-            }
+        if (selected) {
+            fetch(APIallcomments + selected, {
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3ZjlkMzc3Y2RhYTAwMTQ2ZGYzODIiLCJpYXQiOjE2OTkzODExMzQsImV4cCI6MTcwMDU5MDczNH0.H_zPPOH4m7uay3_NjftzDD1rYyJtD3zLEIjrRXRdY1g"
+                },
+            })
+                .then((r) => r.json())
+                .then(setComments)
+                .catch(console.error('Errore Caricamento'))
         }
-        )
-            .then((r) => r.json())
-            .then(setComments)
-            .catch(alert('errore caricamento'))
     }, [selected])
 
-    console.table(comments)
+    // console.table(comments)
     return (
         comments.map((comment) => (
             <h5>{comment.comment}</h5>

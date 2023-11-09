@@ -1,11 +1,13 @@
-import { Card, Col } from 'react-bootstrap'
+import { Button, Card, Col } from 'react-bootstrap'
 import fantasy from '../data/fantasy.json'
 import { useContext } from 'react'
 import BookSelected from '../context/context'
+import { useNavigate } from 'react-router-dom'
 
 
 function SingleBook({ libro }) {
     const { selected, setSelected } = useContext(BookSelected)
+    const navigate=useNavigate()
 
     return (
         <Col className='col-12 col-lg-4 col-md-6'>
@@ -19,8 +21,13 @@ function SingleBook({ libro }) {
                 <Card.Body>
                     <Card.Title className='text-truncate'>{libro.title}</Card.Title>
                 </Card.Body>
+                <Button
+                    onClick={() => navigate(`/bookdetails/${libro.asin}`)}
+                >
+                    Book Details
+                </Button>
             </Card>
-        </Col>
+        </Col >
     )
 }
 

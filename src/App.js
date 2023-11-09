@@ -7,6 +7,9 @@ import { Col, Container, Row } from "react-bootstrap"
 import { useState } from "react";
 import BookSelected from "./context/context"
 import CommentArea from "./component/CommentArea";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from "./component/NotFound";
+import BookDetails from "./component/BookDetails";
 
 
 function App() {
@@ -16,24 +19,35 @@ function App() {
   return (
     <>
       <BookSelected.Provider value={{ selected, setSelected }}>
-        <MyNav userSearch={userSearch} setUserSearch={setUserSearch} />
-        <Container className="mh-50">
-          <Titolo />
-          <Row>
-            <Col className="col-6">
-              <Container>
-                <Row>
-                  <AllTheBooks userSearch={userSearch} />
-                </Row>
-              </Container>
-            </Col>
-                <Col className="col-6">
-                  <CommentArea />
-                  {/* qui commenti del libro selezionato */}
-                </Col>
-          </Row>
-        </Container>
-        <MyFooter />
+        <BrowserRouter>
+          <MyNav userSearch={userSearch} setUserSearch={setUserSearch} />
+          <Container>
+            <Titolo />
+            <Row>
+              <Col className="col-6">
+                <Container>
+                  <Row>
+                    <Routes>
+                      <Route path="/" element={<AllTheBooks userSearch={userSearch} />} />
+                      <Route path="/bookdetails/:asin" element={<BookDetails />}></Route>
+                      {/* <AllTheBooks userSearch={userSearch} /> */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Row>
+                </Container>
+              </Col>
+              <Col className="col-6">
+                {/* qui commenti del libro selezionato */}
+                <Routes>
+                  {/* <CommentArea /> */}
+                  <Route path="/" element={<CommentArea />}>
+                  </Route>
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+          <MyFooter />
+        </BrowserRouter >
       </BookSelected.Provider>
     </>
   );
