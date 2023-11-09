@@ -22,14 +22,16 @@ function App() {
         <BrowserRouter>
           <MyNav userSearch={userSearch} setUserSearch={setUserSearch} />
           <Container>
-            <Titolo />
+            <Routes>
+              <Route path="/" element={<Titolo />}/>
+            </Routes>
             <Row>
               <Col className="col-6">
                 <Container>
                   <Row>
                     <Routes>
                       <Route path="/" element={<AllTheBooks userSearch={userSearch} />} />
-                      <Route path="/bookdetails/:asin" element={<BookDetails />}></Route>
+                      <Route path="/bookdetails/:asin" element={<BookDetails />}/>
                       {/* <AllTheBooks userSearch={userSearch} /> */}
                       <Route path="*" element={<NotFound />} />
                     </Routes>

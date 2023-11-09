@@ -15,11 +15,11 @@ export default function BookDetails() {
         <>
             <Container>
                 <Row>
-                    <Col className='col-6'>
+                    <Col>
                         <h1>{findbook.title}</h1>
                         <img src={findbook.img} alt="" className='w-100'/>
                     </Col>
-                    <Col className='col-6'>
+                    <Col>
                         <CommentArea />
                     </Col>
                 </Row>

@@ -1,8 +1,10 @@
+import { Alert } from "react-bootstrap";
+
 export default function Titolo() {
     return (
         <>
-        <h2 className="my-3"> EPICBOOKS </h2>
-        <h3 className="my-3"> Benvenuto nella nostra Libreria!</h3>
+        <Alert className="my-3"> Benvenuto! </Alert>
+        <h2 className="my-3"> Ecco la nostra Libreria Epibook</h2>
         </>
     )
 }

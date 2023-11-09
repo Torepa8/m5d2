@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../react.png'
 import { Link } from 'react-router-dom';
+import styles from './nav/styles.module.scss'
 
 function FormInput({ userSearch, setUserSearch }) {
   return (
@@ -33,12 +34,12 @@ export default function MyNav({ userSearch, setUserSearch }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <Link to="/"> Home </Link>
+            <Nav.Link href="">
+              <Link to="/" className={styles.nodecoration}> Home </Link>
             </Nav.Link>
-            <Nav.Link href="#link">About</Nav.Link>
+            <Nav.Link className={styles.nodecoration} href="#link">About</Nav.Link>
             <Nav.Link>
-              <Link to="/allbooks" className="text-decoration-none text-dark">Browse</Link>
+              <Link to="/" className={styles.nodecoration}>Browse</Link>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
