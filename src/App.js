@@ -27,16 +27,14 @@ function App() {
             </Routes>
             <Row>
               <Col className="col-6">
-                <Container>
-                  <Row>
+                
                     <Routes>
                       <Route path="/" element={<AllTheBooks userSearch={userSearch} />} />
                       <Route path="/bookdetails/:asin" element={<BookDetails />}/>
                       {/* <AllTheBooks userSearch={userSearch} /> */}
-                      <Route path="*" element={<NotFound />} />
+                      <Route path="/*" element={<NotFound />} />
                     </Routes>
-                  </Row>
-                </Container>
+                  
               </Col>
               <Col className="col-6">
                 {/* qui commenti del libro selezionato */}
